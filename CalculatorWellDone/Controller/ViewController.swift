@@ -26,18 +26,17 @@ class ViewController: UIViewController {
         }
     }
     
-    private let calculationLogic = CalculationLogic()
+    private var calculationLogic = CalculationLogic()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func calcButtonPressed(_ sender: UIButton) {
+        calculationLogic.setNumber(displayValue)
         if let operation = sender.currentTitle {
             if let result = calculationLogic.calculate(operation, to: displayValue) {
                 displayValue = result
-            } else {
-                fatalError("Cannot compute the result")
             }
         }
         isFinishedTypingNumber = true
